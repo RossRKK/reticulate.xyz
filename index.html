@@ -14,20 +14,67 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <!-- font awesome -->
-        <link href="/fontawesome-all.min.css" rel="stylesheet">
+        <link href="css/fontawesome-all.min.css" rel="stylesheet">
 
         <!-- stuff for this page -->
         <link rel="stylesheet" href="style.css">
-        <script src="/script.js"></script>
+        <script src="script.js"></script>
     </head>
     <body>
         <div class="container">
             <hr>
             <div class="row">
                 <div class="col-1"><i class="fas fa-3x fa-code-branch"></i></div>
-                <div class="col-11"><h1>Reticulate</h1></div>
+                <div class="col-10"><h1>Reticulate</h1></div>
+                <div class="col-1"><h1><a target="_blank" href="https://github.com/RossRKK/reticulate"><i class="fab icon fa-github"></i></a></h1></div>
             </div>
             <hr>
+            <div>
+                <h2>About</h2>
+                <p>
+                    Reticulate is an open source, secure, peer to peer file sharing system.
+                    Once a file has been uploaded to the Reticulate network only the files owner (and anyone else the file has been shared with) can access their content.
+                </p>
+                <p>
+                    This means that no one can access your data without your express permission.
+                </p>
+            </div>
+            <div>
+                <h2>Getting Started</h2>
+                <p>
+                    To get started download the latest <a target="_blank" href="https://github.com/RossRKK/reticulate/releases">release</a> from the GitHub page.
+                    <ol>
+                        <li>Extract the zip file</li>
+                        <li>Run either "bin/peer.bat" (Windows) or "bin/peer" (Mac and Linux)</li>
+                        <li>Enter a password for your Ethereum wallet (if you forget this there will be no way to recover your user account)</li>
+                        <li>Enter a username and password for the web client (this prevents unathorized code from affecting your account)</li>
+                        <li>Transfer Ether to the address listed under "User Address" (ether is required in order to complete write operations). You can get Ether by using the <a target="_blank" href="https://faucet.rinkeby.io/">Rinkeby Faucet</a></li>
+                    </ol>
+                </p>
+            </div>
+            <div>
+                <h2>How Does it Work?</h2>
+                <div>
+                    <h3>Encryption</h3>
+                    <p>
+                        Each retiulate user has an accociated Ethereum wallet (on the Rinkeby test net) and an <a target="_blank" href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)">RSA key pair</a>.
+                        When a file is uploaded a private key is generated that is used to encrypt the file, only someone with this key can access the file.
+                        The user that created the file encrypts this key with their RSA public key and stores that encrypted key on an Ethereum smart contract.
+                        Only that user can then decrypt the key later, in order to be able to access the file.
+                    </p>
+                    <p>
+                        If Alice wants to share a file with Bob she can get her copy of the encrypted key from the contract, decrypt it and then re-encrpyt it with Bob's public key and add a second version to the contract.
+                    </p>
+                </div>
+                <div>
+                    <h3>Transfer</h3>
+                    <p>
+                        With a conventional file storage system files are stored in a single centralised location that is vulnerable to attack.
+                        On the Reticulate network files are stored by users of the network. Each Reticulate node stores some parts of some of the files on the network.
+                        When someone wants to download a file they download different parts of it from different nodes.
+                    </p>
+                </div>
+            </div>
         </div>
     </body>
 </html>
